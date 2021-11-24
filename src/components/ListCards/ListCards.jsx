@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { text } from '../../resources/textEn';
 
 const List = styled.div`
-  position: absolute;
-  top: 80%;
   background-color: white;
   height: 100%;
   width: 40%;

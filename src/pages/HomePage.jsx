@@ -4,6 +4,7 @@ import logo from '../images/logo.svg';
 import styled from 'styled-components';
 import { CardHeader } from '../components/cardHeader/CardHeader';
 import { ListCards } from '../components/ListCards/ListCards';
+import { CardStatistics } from '../components/CardStatistics/CardStatistics';
 
 const Header = styled.header`
   height: 500px;
@@ -37,7 +38,13 @@ const Item = styled.li`
 
 const Section = styled.section`
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 450px;
+  /* left: 40%; */
 `;
 
 export const HomePage = () => {
@@ -56,6 +63,7 @@ export const HomePage = () => {
 
       <Section>
         <CardHeader />
+        <CardStatistics />
         <ListCards />
       </Section>
     </>

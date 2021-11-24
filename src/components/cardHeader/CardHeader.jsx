@@ -4,14 +4,12 @@ import logoM from '../../images/logo-mastercraft.svg';
 import { Button } from '../Button/Button';
 const Card = styled.div`
   width: 40%;
-  height: 30%;
+  min-height: 28%;
   background-color: white;
   border-radius: 5px;
-  position: absolute;
-  top: 450px;
   text-align: center;
   font-size: 16px;
-  padding: 0 25px 0 25px;
+  padding: 0 25px 0px 25px;
   p {
     color: hsl(0, 0%, 48%);
     margin-top: 10px;
@@ -19,7 +17,7 @@ const Card = styled.div`
 
   img {
     position: relative;
-    top: -30px; /* ajustar los valores para mover la imagen */
+    top: -30px;
   }
 
   div {
