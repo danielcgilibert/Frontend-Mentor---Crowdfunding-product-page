@@ -41,7 +41,7 @@ export const Card = ({ titulo, textoDescripcion, precio, totalR }) => {
     <CardDiv>
       <TitleCard>
         <h1>{titulo}</h1>
-        <span> Piedge {precio}$ or more</span>
+        <span> Piedge ${precio} or more</span>
       </TitleCard>
 
       <p>{textoDescripcion}</p>
