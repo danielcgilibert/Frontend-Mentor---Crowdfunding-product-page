@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { data } from '../../resources/db';
 const CardStatisticsStyled = styled.div`
   background-color: white;
   height: 100%;
@@ -55,15 +55,15 @@ export const CardStatistics = () => {
     <CardStatisticsStyled>
       <Statistics>
         <Section>
-          <h1>$89,914</h1>
-          <span>of $100,000 backed</span>
+          <h1>$ {data.backed}</h1>
+          <span>of ${data.backedTotal} backed</span>
         </Section>
         <Section>
-          <h1>5,007</h1>
+          <h1>{data.backers}</h1>
           <span>total backers</span>
         </Section>
         <Section>
-          <h1>56</h1>
+          <h1>{data.daysLeft}</h1>
           <span>days left</span>
         </Section>
       </Statistics>
