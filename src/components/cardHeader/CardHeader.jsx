@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import logoM from '../../images/logo-mastercraft.svg';
 import { Button } from '../Button/Button';
+import { ButtonBookMarked } from '../ButtonBookMarked/ButtonBookMarked';
 const Card = styled.div`
   width: 40%;
   min-height: 28%;
@@ -37,7 +38,7 @@ export const CardHeader = () => {
       </p>
       <div>
         <Button texto="Back this project" />
-        <Button texto="Bookmark" />
+        <ButtonBookMarked />
       </div>
     </Card>
   );
