@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logoM from '../../images/logo-mastercraft.svg';
+import { Button } from '../Button/Button';
 const Card = styled.div`
   width: 40%;
   height: 30%;
@@ -21,22 +22,6 @@ const Card = styled.div`
     top: -30px; /* ajustar los valores para mover la imagen */
   }
 
-  button {
-    -webkit-border-radius: 40px 40px 40px 40px;
-    -moz-border-radius: 40px 40px 40px 40px;
-    border-radius: 40px 40px 40px 40px;
-    background-color: hsl(176, 50%, 47%);
-    color: white;
-    padding: 15px 35px 15px 35px;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-
-    &:hover {
-      background-color: hsl(176, 72%, 28%);
-    }
-  }
-
   div {
     display: flex;
     justify-content: space-around;
@@ -53,8 +38,8 @@ export const CardHeader = () => {
         A beautiful & handcrafted monitor stand to reduce neck and eye strain.
       </p>
       <div>
-        <button>Back this project</button>
-        <button>Bookmark</button>
+        <Button texto="Back this project" />
+        <Button texto="Bookmark" />
       </div>
     </Card>
   );

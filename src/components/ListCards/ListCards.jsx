@@ -19,7 +19,7 @@ const InfoProject = styled.div`
   p {
     color: hsl(0, 0%, 48%);
     line-height: 30px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -41,6 +41,32 @@ export const ListCards = () => {
           extra desk space below your computer to allow notepads, pens, and USB
           sticks to be stored under the stand.
         </p>
+        <Card
+          titulo="Bamboo Stand"
+          precio="54"
+          totalR="101"
+          textoDescripcion="        You get an ergonomic stand made of natural bamboo. You've helped us
+        launch our promotional campaign, and you’ll be added to a special Backer
+        member list."
+        />
+
+        <Card
+          titulo="Bamboo Stand"
+          precio="54"
+          totalR="101"
+          textoDescripcion="        You get an ergonomic stand made of natural bamboo. You've helped us
+        launch our promotional campaign, and you’ll be added to a special Backer
+        member list."
+        />
+
+        <Card
+          titulo="Bamboo Stand"
+          precio="54"
+          totalR="101"
+          textoDescripcion="        You get an ergonomic stand made of natural bamboo. You've helped us
+        launch our promotional campaign, and you’ll be added to a special Backer
+        member list."
+        />
       </InfoProject>
     </List>
   );
