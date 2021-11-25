@@ -36,7 +36,14 @@ const FooterCard = styled.div`
   }
 `;
 
-export const Card = ({ titulo, textoDescripcion, precio, totalR }) => {
+export const Card = ({
+  titulo,
+  textoDescripcion,
+  precio,
+  totalR,
+  showModal,
+  setShowModal,
+}) => {
   return (
     <CardDiv>
       <TitleCard>
@@ -50,7 +57,11 @@ export const Card = ({ titulo, textoDescripcion, precio, totalR }) => {
         <div>
           <h1> {totalR}</h1> <p>left</p>
         </div>
-        <Button texto="Select Reward" />
+        <Button
+          showModal={showModal}
+          setShowModal={setShowModal}
+          texto="Select Reward"
+        />
       </FooterCard>
     </CardDiv>
   );
