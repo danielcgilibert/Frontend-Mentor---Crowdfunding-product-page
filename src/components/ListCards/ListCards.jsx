@@ -23,7 +23,7 @@ const InfoProject = styled.div`
   }
 `;
 
-export const ListCards = () => {
+export const ListCards = ({ showModal, setShowModal }) => {
   return (
     <List>
       <InfoProject>
@@ -50,6 +50,8 @@ export const ListCards = () => {
               precio={card.price}
               totalR={100}
               textoDescripcion={card.description}
+              showModal={showModal}
+              setShowModal={setShowModal}
             />
           );
         })}

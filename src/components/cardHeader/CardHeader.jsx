@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import logoM from '../../images/logo-mastercraft.svg';
 import { Button } from '../Button/Button';
 import { ButtonBookMarked } from '../ButtonBookMarked/ButtonBookMarked';
+import { Modal } from '../Modal/Modal';
 const Card = styled.div`
   width: 40%;
   min-height: 28%;
@@ -28,18 +29,26 @@ const Card = styled.div`
   }
 `;
 
-export const CardHeader = () => {
+export const CardHeader = ({ showModal, setShowModal }) => {
   return (
-    <Card>
-      <img src={logoM} alt="React Logo" />
-      <h1> Mastercraft Bamboo Monitor Riser </h1>
-      <p>
-        A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-      </p>
-      <div>
-        <Button texto="Back this project" />
-        <ButtonBookMarked />
-      </div>
-    </Card>
+    <>
+      {showModal && <Modal setShowModal={setShowModal} />}
+
+      <Card>
+        <img src={logoM} alt="React Logo" />
+        <h1> Mastercraft Bamboo Monitor Riser </h1>
+        <p>
+          A beautiful & handcrafted monitor stand to reduce neck and eye strain.
+        </p>
+        <div>
+          <Button
+            showModal={showModal}
+            setShowModal={setShowModal}
+            texto="Back this project"
+          />
+          <ButtonBookMarked />
+        </div>
+      </Card>
+    </>
   );
 };

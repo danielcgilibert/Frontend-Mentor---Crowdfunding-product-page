@@ -31,9 +31,15 @@ const ButtonStyled = styled.button`
   }}
 `;
 
-export const Button = ({ texto }) => {
+export const Button = ({ texto, showModal, setShowModal }) => {
+  const handleModal = () => {
+    setShowModal(true);
+  };
+
   return texto ? (
-    <ButtonStyled texto>{texto}</ButtonStyled>
+    <ButtonStyled onClick={handleModal} texto>
+      {texto}
+    </ButtonStyled>
   ) : (
     <ButtonStyled disabled>Out of stock </ButtonStyled>
   );

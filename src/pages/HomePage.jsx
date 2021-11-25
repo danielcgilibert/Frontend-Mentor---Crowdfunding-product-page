@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import image from '../images/image-hero-desktop.jpg';
 import logo from '../images/logo.svg';
 import styled from 'styled-components';
@@ -48,6 +48,8 @@ const Section = styled.section`
 `;
 
 export const HomePage = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <Header style={{ backgroundImage: `url(${image})` }}>
@@ -62,9 +64,9 @@ export const HomePage = () => {
       </Header>
 
       <Section>
-        <CardHeader />
+        <CardHeader showModal={showModal} setShowModal={setShowModal} />
         <CardStatistics />
-        <ListCards />
+        <ListCards showModal={showModal} setShowModal={setShowModal} />
       </Section>
     </>
   );
