@@ -45,7 +45,7 @@ const ProgessBar = styled.div`
 const ContainerProgessBar = styled.div`
   width: 100%;
   height: 10%;
-  background-color: #80808014;
+  background-color: #80808039;
   border-radius: 25px;
   margin: 50;
 `;
