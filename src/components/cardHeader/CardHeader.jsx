@@ -6,7 +6,7 @@ import { ButtonBookMarked } from '../ButtonBookMarked/ButtonBookMarked';
 import { Modal } from '../Modal/Modal';
 const Card = styled.div`
   width: 40%;
-  min-height: 28%;
+  height: 300px;
   background-color: white;
   border-radius: 5px;
   text-align: center;
