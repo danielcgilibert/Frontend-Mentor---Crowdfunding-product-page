@@ -9,6 +9,7 @@ import { CardStatistics } from '../components/CardStatistics/CardStatistics';
 const Header = styled.header`
   height: 500px;
   width: 100%;
+  border-radius: 15px;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
@@ -41,7 +42,6 @@ const Section = styled.section`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   position: absolute;
   top: 450px;
   /* left: 40%; */
