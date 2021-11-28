@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const CardDiv = styled.div`
@@ -36,17 +36,34 @@ const TitleCard = styled.div`
   }
 `;
 
+const RadioButton = styled.input`
+  border: 1px solid hsl(176, 50%, 47%);
+  width: 16px;
+  height: 15px;
+  border-radius: 100%;
+`;
+
 const DescriptionCard = styled.div`
   color: gray;
   padding: 0 25px 0 25px;
 `;
 
-export const CardModal = () => {
+export const CardModal = ({ radioButton, setRadioButton, indice }) => {
+  const handleChange = (e) => {
+    console.log('entrada', radioButton);
+    setRadioButton(!radioButton);
+    console.log('salida', radioButton);
+  };
   return (
-    <CardDiv>
+    <CardDiv onClick={handleChange}>
       <TitleCard>
         <div>
-          <input type="radio" name="gender" />
+          <RadioButton
+            type="radio"
+            checked={radioButton}
+            value={indice}
+            name={indice}
+          />
           <h3>Bamboo Stand</h3>
           <h3> Piedge $55 or more</h3>
         </div>

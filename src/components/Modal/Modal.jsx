@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import iconClose from '../../images/icon-close-modal.svg';
 import { CardModal } from '../CardModal/CardModal';
@@ -44,6 +44,8 @@ const HeaderModal = styled.div`
 `;
 
 export const Modal = ({ setShowModal }) => {
+  const [radioButton, setRadioButton] = useState(false);
+
   return (
     <ModalStyled>
       <ModalContent>
@@ -59,9 +61,21 @@ export const Modal = ({ setShowModal }) => {
           Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
           the world?
         </p>
-        <CardModal />
-        <CardModal />
-        <CardModal />
+        <CardModal
+          radioButton={radioButton}
+          setRadioButton={setRadioButton}
+          indice={1}
+        />
+        <CardModal
+          radioButton={radioButton}
+          setRadioButton={setRadioButton}
+          indice={2}
+        />
+        <CardModal
+          radioButton={radioButton}
+          setRadioButton={setRadioButton}
+          indice={3}
+        />
       </ModalContent>
     </ModalStyled>
   );
