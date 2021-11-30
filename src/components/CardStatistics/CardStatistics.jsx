@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { data } from '../../resources/db';
+
 const CardStatisticsStyled = styled.div`
   background-color: white;
   height: 100%;
@@ -11,8 +12,8 @@ const CardStatisticsStyled = styled.div`
 
 const Statistics = styled.div`
   background-color: white;
-  display: flex;
   justify-content: space-around;
+  display: flex;
   align-items: center;
   align-content: center;
   padding: 35px 0 35px 0;
@@ -37,14 +38,14 @@ const Section = styled.div`
 
 const ProgessBar = styled.div`
   width: 50%;
-  height: 100%;
+  min-height: 20px;
   background-color: hsl(176, 50%, 47%);
   border-radius: 25px;
 `;
 
 const ContainerProgessBar = styled.div`
   width: 100%;
-  height: 10%;
+  min-height: 20px;
   background-color: #80808039;
   border-radius: 25px;
   margin: 50;
