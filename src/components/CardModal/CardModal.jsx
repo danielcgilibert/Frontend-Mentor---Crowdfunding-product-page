@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 const CardDiv = styled.div`
   margin-top: 25px;
-  border: solid 1px #66666618;
+  border: solid
+    ${(props) => (props.active ? `3px hsl(176, 50%, 47%)` : `1px #80808042`)};
+  transition: all 0.2s;
   border-radius: 5px;
-  padding: 15px;
-  cursor: pointer;
+  padding: 25px;
+  cursor: ${(props) => (props.disabled ? `not-allowed` : `pointer`)};
+  opacity: ${(props) => props.disabled && `0.5`};
 
   &:hover {
     h3 {
@@ -19,10 +22,10 @@ const CardDiv = styled.div`
 const TitleCard = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 
   h3 {
-    margin: 0 15px 0 15px;
+    margin: 0 25px 0 25px;
   }
   div {
     display: flex;
@@ -36,11 +39,13 @@ const TitleCard = styled.div`
   }
 `;
 
-const RadioButton = styled.input`
+const RadioButtonDiv = styled.div`
   border: 1px solid hsl(176, 50%, 47%);
-  width: 16px;
+  width: 15px;
   height: 15px;
   border-radius: 100%;
+  background-color: ${(props) =>
+    props.active ? `hsl(176, 50%, 47%)` : `white`};
 `;
 
 const DescriptionCard = styled.div`
@@ -48,34 +53,80 @@ const DescriptionCard = styled.div`
   padding: 0 25px 0 25px;
 `;
 
-export const CardModal = ({ radioButton, setRadioButton, indice }) => {
-  const handleChange = (e) => {
-    console.log('entrada', radioButton);
-    setRadioButton(!radioButton);
-    console.log('salida', radioButton);
+const DivSelectForm = styled.div`
+  color: gray;
+  margin: 15px 0 0 0;
+  padding: 0 25px 0 25px;
+`;
+
+const FormDiv = styled.form`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+
+  button {
+    background-color: hsl(176, 50%, 47%);
+    color: white;
+    padding: 15px 15px 15px 15px;
+    border: none;
+    font-weight: bold;
+    border-radius: 100%;
+  }
+
+  input {
+    font-weight: bold;
+    width: 100px;
+    border: solid 1px gray;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    border-radius: 36px;
+    margin: 0 15px 0 0;
+  }
+`;
+
+export const CardModal = ({
+  id,
+  titulo,
+  precio,
+  totalR,
+  textoDescripcion,
+  selectId,
+  setSelectId,
+}) => {
+  const handleSelectReward = (e) => {
+    setSelectId(id);
   };
   return (
-    <CardDiv onClick={handleChange}>
+    <CardDiv
+      disabled={totalR === 0 && true}
+      onClick={totalR !== 0 ? handleSelectReward : undefined}
+      active={selectId === id ? true : false}
+    >
       <TitleCard>
         <div>
-          <RadioButton
-            type="radio"
-            checked={radioButton}
-            value={indice}
-            name={indice}
-          />
-          <h3>Bamboo Stand</h3>
-          <h3> Piedge $55 or more</h3>
+          <RadioButtonDiv active={selectId === id ? true : false} />
+          <h3>{titulo}</h3>
+          {precio !== '0' && <h3> Piedge ${precio} or more</h3>}
         </div>
-        <div>
-          <h4> 101 Left</h4>
-        </div>
+        <div>{totalR != null && <h4> {totalR} Left</h4>}</div>
       </TitleCard>
 
-      <DescriptionCard>
-        You get a Black Special Edition computer stand and a personal thank you.
-        You’ll be added to our Backer member list. Shipping is included.
-      </DescriptionCard>
+      <DescriptionCard>{textoDescripcion}</DescriptionCard>
+
+      {selectId === id && (
+        <DivSelectForm>
+          <hr />
+          <FormDiv>
+            <span>Enter your piedge</span>
+            <div>
+              <input type="text" value={precio} placeholder={precio} />
+              <button>Continue</button>
+            </div>
+          </FormDiv>
+        </DivSelectForm>
+      )}
     </CardDiv>
   );
 };
