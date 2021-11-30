@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { CardHeader } from '../components/cardHeader/CardHeader';
 import { ListCards } from '../components/ListCards/ListCards';
 import { CardStatistics } from '../components/CardStatistics/CardStatistics';
-
+import { size } from '../styles/devices';
 const Header = styled.header`
   height: 500px;
   width: 100%;
@@ -14,6 +14,9 @@ const Header = styled.header`
   background-repeat: no-repeat;
   color: white;
   font-size: 16px;
+
+  @media (max-width: ${size.mobileL}) {
+  }
 `;
 
 const Nav = styled.nav`

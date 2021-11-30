@@ -16,13 +16,12 @@ const ModalStyled = styled.div`
 const ModalContent = styled.div`
   position: fixed;
   background: white;
-  width: 45%;
+  width: 40%;
   top: 50%;
   left: 50%;
   border-radius: 10px;
   transform: translate(-50%, -50%);
   padding: 25px;
-
   p {
     color: gray;
     margin-top: 15px;

@@ -4,6 +4,8 @@ import logoM from '../../images/logo-mastercraft.svg';
 import { Button } from '../Button/Button';
 import { ButtonBookMarked } from '../ButtonBookMarked/ButtonBookMarked';
 import { Modal } from '../Modal/Modal';
+import { size } from '../../styles/devices';
+
 const Card = styled.div`
   width: 40%;
   height: 300px;
@@ -12,6 +14,11 @@ const Card = styled.div`
   text-align: center;
   font-size: 16px;
   padding: 0 25px 0px 25px;
+
+  @media (max-width: ${size.mobileL}) {
+    width: 80%;
+  }
+
   p {
     color: hsl(0, 0%, 48%);
     margin-top: 10px;

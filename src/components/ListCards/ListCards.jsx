@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../Card/Card';
 import styled from 'styled-components';
-import { text } from '../../resources/textEn';
+import { size } from '../../styles/devices';
 
 const List = styled.div`
   background-color: white;
@@ -9,6 +9,10 @@ const List = styled.div`
   width: 40%;
   border-radius: 5px;
   padding: 25px;
+  @media (max-width: ${size.mobileL}) {
+    width: 80%;
+    margin: 15px 0 15px 0;
+  }
 `;
 
 const InfoProject = styled.div`

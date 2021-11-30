@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const CardDiv = styled.div`
@@ -8,21 +8,24 @@ const CardDiv = styled.div`
   transition: all 0.2s;
   border-radius: 5px;
   padding: 25px;
-  cursor: ${(props) => (props.disabled ? `not-allowed` : `pointer`)};
-  opacity: ${(props) => props.disabled && `0.5`};
-
-  &:hover {
+  opacity: ${(props) => props.disabled && `0.3`};
+  ${({ disabled }) =>
+    !disabled &&
+    `
+     &:hover {
     h3 {
       color: hsl(176, 50%, 47%);
       font-weight: bold;
     }
   }
+  `}
 `;
 
 const TitleCard = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  cursor: ${(props) => (props.disabled ? `not-allowed` : `pointer`)};
 
   h3 {
     margin: 0 25px 0 25px;
@@ -51,6 +54,7 @@ const RadioButtonDiv = styled.div`
 const DescriptionCard = styled.div`
   color: gray;
   padding: 0 25px 0 25px;
+  margin-left: 15px;
 `;
 
 const DivSelectForm = styled.div`
@@ -70,7 +74,10 @@ const FormDiv = styled.form`
     padding: 15px 15px 15px 15px;
     border: none;
     font-weight: bold;
-    border-radius: 100%;
+    -webkit-border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    border-radius: 40px 40px 40px 40px;
+    cursor: pointer;
   }
 
   input {
@@ -104,7 +111,7 @@ export const CardModal = ({
       onClick={totalR !== 0 ? handleSelectReward : undefined}
       active={selectId === id ? true : false}
     >
-      <TitleCard>
+      <TitleCard disabled={totalR === 0 && true}>
         <div>
           <RadioButtonDiv active={selectId === id ? true : false} />
           <h3>{titulo}</h3>
