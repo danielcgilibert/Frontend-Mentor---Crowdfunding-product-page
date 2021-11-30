@@ -29,10 +29,23 @@ const Card = styled.div`
   }
 `;
 
-export const CardHeader = ({ showModal, setShowModal }) => {
+export const CardHeader = ({
+  showModal,
+  setShowModal,
+  rewards,
+  selectId,
+  setSelectId,
+}) => {
   return (
     <>
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && (
+        <Modal
+          rewards={rewards}
+          selectId={selectId}
+          setSelectId={setSelectId}
+          setShowModal={setShowModal}
+        />
+      )}
 
       <Card>
         <img src={logoM} alt="React Logo" />
@@ -44,6 +57,8 @@ export const CardHeader = ({ showModal, setShowModal }) => {
           <Button
             showModal={showModal}
             setShowModal={setShowModal}
+            selectId={selectId}
+            setSelectId={setSelectId}
             texto="Back this project"
           />
           <ButtonBookMarked />

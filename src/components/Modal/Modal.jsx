@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import iconClose from '../../images/icon-close-modal.svg';
 import { CardModal } from '../CardModal/CardModal';
@@ -17,7 +17,6 @@ const ModalContent = styled.div`
   position: fixed;
   background: white;
   width: 45%;
-  height: 80%;
   top: 50%;
   left: 50%;
   border-radius: 10px;
@@ -43,9 +42,7 @@ const HeaderModal = styled.div`
   padding: 25px;
 `;
 
-export const Modal = ({ setShowModal }) => {
-  const [radioButton, setRadioButton] = useState(false);
-
+export const Modal = ({ setShowModal, rewards, selectId, setSelectId }) => {
   return (
     <ModalStyled>
       <ModalContent>
@@ -61,21 +58,21 @@ export const Modal = ({ setShowModal }) => {
           Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
           the world?
         </p>
-        <CardModal
-          radioButton={radioButton}
-          setRadioButton={setRadioButton}
-          indice={1}
-        />
-        <CardModal
-          radioButton={radioButton}
-          setRadioButton={setRadioButton}
-          indice={2}
-        />
-        <CardModal
-          radioButton={radioButton}
-          setRadioButton={setRadioButton}
-          indice={3}
-        />
+
+        {rewards.map((card) => {
+          return (
+            <CardModal
+              key={card.id}
+              id={card.id}
+              titulo={card.title}
+              precio={card.price}
+              totalR={card.totalRewards}
+              selectId={selectId}
+              setSelectId={setSelectId}
+              textoDescripcion={card.description}
+            />
+          );
+        })}
       </ModalContent>
     </ModalStyled>
   );

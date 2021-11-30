@@ -23,7 +23,13 @@ const InfoProject = styled.div`
   }
 `;
 
-export const ListCards = ({ showModal, setShowModal }) => {
+export const ListCards = ({
+  showModal,
+  setShowModal,
+  rewards,
+  selectId,
+  setSelectId,
+}) => {
   return (
     <List>
       <InfoProject>
@@ -42,16 +48,19 @@ export const ListCards = ({ showModal, setShowModal }) => {
           sticks to be stored under the stand.
         </p>
 
-        {text.map((card, index) => {
+        {rewards.map((card) => {
           return (
             <Card
-              key={index}
+              key={card.id}
+              id={card.id}
               titulo={card.title}
               precio={card.price}
-              totalR={100}
+              totalR={card.totalRewards}
               textoDescripcion={card.description}
               showModal={showModal}
               setShowModal={setShowModal}
+              selectId={selectId}
+              setSelectId={setSelectId}
             />
           );
         })}
