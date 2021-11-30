@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { size } from '../../styles/devices';
 
 const CardDiv = styled.div`
   margin-top: 25px;
@@ -19,6 +20,14 @@ const CardDiv = styled.div`
     }
   }
   `}
+
+  @media (max-width: ${size.mobileL}) {
+    padding: 15px 0 15px 0;
+    height: auto;
+    p {
+      font-size: 15px;
+    }
+  }
 `;
 
 const TitleCard = styled.div`
@@ -27,7 +36,25 @@ const TitleCard = styled.div`
   margin-bottom: 15px;
   cursor: ${(props) => (props.disabled ? `not-allowed` : `pointer`)};
 
+  @media (max-width: ${size.mobileL}) {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & div > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      margin: 0 10px 0 0;
+    }
+  }
+
   h3 {
+    @media (max-width: ${size.mobileL}) {
+      margin: 0;
+    }
     margin: 0 25px 0 25px;
   }
   div {
@@ -51,10 +78,15 @@ const RadioButtonDiv = styled.div`
     props.active ? `hsl(176, 50%, 47%)` : `white`};
 `;
 
-const DescriptionCard = styled.div`
+const DescriptionCard = styled.p`
   color: gray;
   padding: 0 25px 0 25px;
   margin-left: 15px;
+  line-height: 1.6;
+
+  @media (max-width: ${size.mobileL}) {
+    padding: 0 12px 0 12px;
+  }
 `;
 
 const DivSelectForm = styled.div`
@@ -63,10 +95,34 @@ const DivSelectForm = styled.div`
   padding: 0 25px 0 25px;
 `;
 
+const DivTotalRewards = styled.div`
+  @media (max-width: ${size.mobileL}) {
+    display: none !important;
+  }
+`;
+const DivTotalRewardsMobile = styled.div`
+  margin: 15px 0 0 0;
+  padding: 0 25px 0 25px;
+  @media (min-width: ${size.mobileL}) {
+    display: none !important;
+  }
+`;
+
 const FormDiv = styled.form`
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+
+  @media (max-width: ${size.mobileL}) {
+    span {
+      margin-bottom: 15px;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    flex-direction: column;
+  }
 
   button {
     background-color: hsl(176, 50%, 47%);
@@ -74,8 +130,6 @@ const FormDiv = styled.form`
     padding: 15px 15px 15px 15px;
     border: none;
     font-weight: bold;
-    -webkit-border-radius: 40px 40px 40px 40px;
-    -moz-border-radius: 40px 40px 40px 40px;
     border-radius: 40px 40px 40px 40px;
     cursor: pointer;
   }
@@ -86,8 +140,6 @@ const FormDiv = styled.form`
     border: solid 1px gray;
     padding: 10px 0px 10px 0px;
     text-align: center;
-    -webkit-border-radius: 36px;
-    -moz-border-radius: 36px;
     border-radius: 36px;
     margin: 0 15px 0 0;
   }
@@ -114,13 +166,21 @@ export const CardModal = ({
       <TitleCard disabled={totalR === 0 && true}>
         <div>
           <RadioButtonDiv active={selectId === id ? true : false} />
-          <h3>{titulo}</h3>
-          {precio !== '0' && <h3> Piedge ${precio} or more</h3>}
+          <div>
+            <h3>{titulo}</h3>
+            {precio !== '0' && <h3> Piedge ${precio} or more</h3>}
+          </div>
         </div>
-        <div>{totalR != null && <h4> {totalR} Left</h4>}</div>
+        <DivTotalRewards>
+          {totalR != null && <h4> {totalR} Left</h4>}
+        </DivTotalRewards>
       </TitleCard>
 
       <DescriptionCard>{textoDescripcion}</DescriptionCard>
+
+      <DivTotalRewardsMobile>
+        {totalR != null && <h4> {totalR} Left</h4>}
+      </DivTotalRewardsMobile>
 
       {selectId === id && (
         <DivSelectForm>

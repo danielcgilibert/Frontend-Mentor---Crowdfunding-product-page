@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import iconClose from '../../images/icon-close-modal.svg';
 import { CardModal } from '../CardModal/CardModal';
+import { size } from '../../styles/devices';
+
 const ModalStyled = styled.div`
   position: fixed;
   z-index: 1;
@@ -22,6 +24,13 @@ const ModalContent = styled.div`
   border-radius: 10px;
   transform: translate(-50%, -50%);
   padding: 25px;
+
+  @media (max-width: ${size.mobileL}) {
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
   p {
     color: gray;
     margin-top: 15px;
