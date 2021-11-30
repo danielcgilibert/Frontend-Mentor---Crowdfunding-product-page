@@ -9,8 +9,8 @@ import { CardStatistics } from '../components/CardStatistics/CardStatistics';
 const Header = styled.header`
   height: 500px;
   width: 100%;
-  border-radius: 15px;
   background-size: cover;
+  border-bottom: 5px solid white;
   background-repeat: no-repeat;
   color: white;
   font-size: 16px;
@@ -49,6 +49,41 @@ const Section = styled.section`
 
 export const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [rewards, setRewards] = useState([
+    {
+      id: 0,
+      title: 'Pledge with no reward',
+      price: '0',
+      description:
+        'Choose to support without a reward if you simple believe in our project.',
+    },
+    {
+      id: 1,
+      title: 'Bamboo Stand',
+      price: '25',
+      totalRewards: 52,
+      description:
+        "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
+    },
+    {
+      id: 2,
+      title: 'Black Edition Stand',
+      price: '75',
+      totalRewards: 25,
+      description:
+        'You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.',
+    },
+    {
+      id: 3,
+      title: 'Mahogany Special Edition',
+      price: '200',
+      totalRewards: 0,
+      description:
+        'You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.',
+    },
+  ]);
+
+  const [selectId, setSelectId] = useState(0);
 
   return (
     <>
@@ -64,9 +99,21 @@ export const HomePage = () => {
       </Header>
 
       <Section>
-        <CardHeader showModal={showModal} setShowModal={setShowModal} />
+        <CardHeader
+          rewards={rewards}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          selectId={selectId}
+          setSelectId={setSelectId}
+        />
         <CardStatistics />
-        <ListCards showModal={showModal} setShowModal={setShowModal} />
+        <ListCards
+          rewards={rewards}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          selectId={selectId}
+          setSelectId={setSelectId}
+        />
       </Section>
     </>
   );
