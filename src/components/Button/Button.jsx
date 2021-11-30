@@ -31,8 +31,21 @@ const ButtonStyled = styled.button`
   }}
 `;
 
-export const Button = ({ texto, showModal, setShowModal }) => {
+export const Button = ({
+  idCard,
+  texto,
+  showModal,
+  setShowModal,
+  selectId,
+  setSelectId,
+  totalR,
+}) => {
   const handleModal = () => {
+    if (totalR === 0 || idCard === undefined) {
+      setSelectId(null);
+    } else {
+      setSelectId(idCard);
+    }
     setShowModal(true);
   };
 
