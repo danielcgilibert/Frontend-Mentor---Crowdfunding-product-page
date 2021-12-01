@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { size } from '../../styles/devices';
+import { ModalThanks } from '../ModalThanks/ModalThanks';
 
 const CardDiv = styled.div`
   margin-top: 25px;
   border: solid
     ${(props) => (props.active ? `3px hsl(176, 50%, 47%)` : `1px #80808042`)};
-  transition: all 0.2s;
+  transition: all 0.1s;
   border-radius: 5px;
   padding: 25px;
   opacity: ${(props) => props.disabled && `0.3`};
@@ -16,7 +17,6 @@ const CardDiv = styled.div`
      &:hover {
     h3 {
       color: hsl(176, 50%, 47%);
-      font-weight: bold;
     }
   }
   `}
@@ -157,43 +157,49 @@ export const CardModal = ({
   const handleSelectReward = (e) => {
     setSelectId(id);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
-    <CardDiv
-      disabled={totalR === 0 && true}
-      onClick={totalR !== 0 ? handleSelectReward : undefined}
-      active={selectId === id ? true : false}
-    >
-      <TitleCard disabled={totalR === 0 && true}>
-        <div>
-          <RadioButtonDiv active={selectId === id ? true : false} />
+    <>
+      <CardDiv
+        disabled={totalR === 0 && true}
+        onClick={totalR !== 0 ? handleSelectReward : undefined}
+        active={selectId === id ? true : false}
+      >
+        <TitleCard disabled={totalR === 0 && true}>
           <div>
-            <h3>{titulo}</h3>
-            {precio !== '0' && <h3> Piedge ${precio} or more</h3>}
-          </div>
-        </div>
-        <DivTotalRewards>
-          {totalR != null && <h4> {totalR} Left</h4>}
-        </DivTotalRewards>
-      </TitleCard>
-
-      <DescriptionCard>{textoDescripcion}</DescriptionCard>
-
-      <DivTotalRewardsMobile>
-        {totalR != null && <h4> {totalR} Left</h4>}
-      </DivTotalRewardsMobile>
-
-      {selectId === id && (
-        <DivSelectForm>
-          <hr />
-          <FormDiv>
-            <span>Enter your piedge</span>
+            <RadioButtonDiv active={selectId === id ? true : false} />
             <div>
-              <input type="text" value={precio} placeholder={precio} />
-              <button>Continue</button>
+              <h3>{titulo}</h3>
+              {precio !== '0' && <h3> Piedge ${precio} or more</h3>}
             </div>
-          </FormDiv>
-        </DivSelectForm>
-      )}
-    </CardDiv>
+          </div>
+          <DivTotalRewards>
+            {totalR != null && <h4> {totalR} Left</h4>}
+          </DivTotalRewards>
+        </TitleCard>
+
+        <DescriptionCard>{textoDescripcion}</DescriptionCard>
+
+        <DivTotalRewardsMobile>
+          {totalR != null && <h4> {totalR} Left</h4>}
+        </DivTotalRewardsMobile>
+
+        {selectId === id && (
+          <DivSelectForm>
+            <hr />
+            <FormDiv onSubmit={handleSubmit}>
+              <span>Enter your piedge</span>
+              <div>
+                <input type="number" placeholder={precio} />
+                <button>Continue</button>
+              </div>
+            </FormDiv>
+          </DivSelectForm>
+        )}
+      </CardDiv>
+    </>
   );
 };

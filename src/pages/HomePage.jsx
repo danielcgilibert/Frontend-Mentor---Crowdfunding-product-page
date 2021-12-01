@@ -6,6 +6,7 @@ import { CardHeader } from '../components/cardHeader/CardHeader';
 import { ListCards } from '../components/ListCards/ListCards';
 import { CardStatistics } from '../components/CardStatistics/CardStatistics';
 import { size } from '../styles/devices';
+import { ModalThanks } from '../components/ModalThanks/ModalThanks';
 const Header = styled.header`
   height: 500px;
   width: 100%;
@@ -52,6 +53,7 @@ const Section = styled.section`
 
 export const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalThanks, setshowModalThanks] = useState(true);
   const [rewards, setRewards] = useState([
     {
       id: 0,
@@ -90,6 +92,13 @@ export const HomePage = () => {
 
   return (
     <>
+      {showModalThanks && (
+        <ModalThanks
+          showModalThanks={showModalThanks}
+          setshowModalThanks={setshowModalThanks}
+        />
+      )}
+
       <Header style={{ backgroundImage: `url(${image})` }}>
         <Nav>
           <img src={logo} alt="React Logo" />
